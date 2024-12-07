@@ -27,8 +27,8 @@ Run the project directly, via `:main-opts` (`-m tudorescu.advent2024`):
 
 Run the project, overriding the name to be greeted:
 
-    $ clojure -M:run-m Via-Main
-    Hello, Via-Main!
+    $ clj -M:run-m tudorescu/advent2024.clj
+    >stuff
 
 Run the project's tests (they'll fail until you edit them):
 
