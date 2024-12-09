@@ -1,6 +1,7 @@
 (ns tudorescu.advent2024.day3
   (:require
-   [clojure.string :as str]))
+   [clojure.string :as str]
+   [clojure.pprint :as pprint]))
 
 (defn parse-and-multiply
   "find the multiply instructions and add-up the results"
@@ -71,19 +72,43 @@
   (let [pos-do (str/last-index-of input "do")
         pos-dont (str/last-index-of input "don't")
         end-pos (if (nil? pos-dont) (count input) pos-dont)]
+    (println (str "pos-do: " pos-do " and pos-dont: " pos-dont ", end-pos: " end-pos ))
     (cond
       (nil? pos-do)
-      {:end-position 0,   
-       :segment-result (parse-and-multiply input)}
-      
+      (do
+        (println "pos-do nil")
+        {:end-position 0,
+         :segment-result (parse-and-multiply input)})
+
       (= pos-do end-pos)
-      {:end-position pos-do,
-       :segment-result 0}
+      (do
+        (println "pos-do = end-pos")
+        {:end-position pos-do,
+         :segment-result 0})
 
       (> end-pos pos-do)
-      {:end-position pos-do,
-       :segment-result (parse-and-multiply
-                        (subs input pos-do end-pos))})))
+      (do (println "end-pos > pos-do")
+          {:end-position pos-do,
+           :segment-result (parse-and-multiply
+                            (subs input pos-do end-pos))})
+
+
+      (> end-pos pos-do)
+      (do (println "end-pos > pos-do")
+          {:end-position pos-do,
+           :segment-result (parse-and-multiply
+                            (subs input pos-do end-pos))})
+
+      :else
+      (do
+        (println "else")
+        {:end-position pos-do,
+         :segment-result (parse-and-multiply
+                          (subs input pos-do (count input)))}))))
+
+
+;;(add-tap (bound-fn* clojure.pprint/pprint))
+;;(remove-tap (bound-fn* clojure.pprint/pprint))
 
 (defn do-puzzle2
 
@@ -122,7 +147,10 @@
      reverse search do or begining of string:
       --- search don't or do or end of string: substring -> input
       (let start-segment (last-index-of input 'do' (count input))
-      (index-of input 'don't' )"
+      (index-of input 'don't' )
+     
+     reasult: 88802350
+     "
 
   ([] (do-puzzle2 (slurp "resources/03_input.txt")))
   ([input]

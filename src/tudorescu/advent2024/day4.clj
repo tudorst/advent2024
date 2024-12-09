@@ -1,7 +1,7 @@
 (ns tudorescu.advent2024.day4)
 
 
-(defn do-puzzle1 
+(defn do-puzzle1
   "
     --- Day 4: Ceres Search ---
    
@@ -54,5 +54,9 @@
    .X.X.XMASX
    Take a look at the little Elf's word search. How many times does XMAS appear?
    
-   
- "[])
+   Idea: just count the number of X, M, A, S in the input string 
+   and return the minimum of the counts raised to 4 (since XMAS has 4 letters)
+ "
+  ([] (do-puzzle1 "resources/04_input.txt"))
+  ([input]
+   ))
