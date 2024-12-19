@@ -33,3 +33,7 @@ Alternative using map-indexed:
  {2 "AMXSXMAAMM"}...)
  ```
 
+```clojure
+(def string-test (apply str (reduce #(concat %1 %2) "" (re-seq #"\w+" test-str))))
+```
+

@@ -75,7 +75,6 @@
    (S|X)(.{line+1})(A|M)(.{line+2)})(M|A)(.{line+3})(X|S)|
    (S|X)(.{line-1})(A|M)(.{line-2)})(M|A)(.{line-3})(X|S)|
    (S|X)(.{line})(A|M)(.{line)})(M|A)(.{line})(X|S)
-  
    1  (0 5, 0 6, 0 7, 0 8)
    2  (0 4, 1 5, 2 6, 3 7)
    3  (1 1, 1 2, 1 3, 1 4)
@@ -96,10 +95,7 @@
    18 (9 9, 8 8, 7 7, 6 6)
 
    
-   Take a look at the little Elf's word search. How many times does XMAS appear?
-   
-   Idea: just count the number of X, M, A, S in the input string 
-   and return the minimum of the counts raised to 4 (since XMAS has 4 letters)"
+   Take a look at the little Elf's word search. How many times does XMAS appear?"
   ([] (do-puzzle1 (slurp "resources/04_input.txt")))
   ([input]
    (let [xmas-count (fn [input] (->> input (filter #{\X \M \A \S}) (frequencies)))]
